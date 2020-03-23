@@ -1,0 +1,37 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      User-Agent: [python-requests/2.18.3]
+    method: GET
+    uri: http://www.goodreads.com/book/id_to_work_id/1842,1867?format=xml
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAAA2WQUWvCQBCE3/MrYt7tqSXtFdYTUSq1LYqNSBEJMbfoobltc5em/ffmomLRt9nl
+        m9lhofeb7f0fzI0i3Q3ad63AR52SVHrTDebRc5MHPeHBiEjmmEgzQ/NF2qDwfB9m+F2gsU5XU1LY
+        LWqr0sRWYcLmBQK7WtZkxe7wT0BjORj2o/5y+sg/9euQv6TR+O1j/P4wKRflaiWAOewYnqHdkrx4
+        1kS7WMnYUlxS7mRtOGGuHPvXDhzTVNKc0pTFTHTa95yHHWD1dDxTy/CJh+ctsIvVA3b7hwNO32Cn
+        QgEAAA==
+    headers:
+      Cache-Control: ['max-age=0, private, must-revalidate']
+      Content-Encoding: [gzip]
+      Content-Type: [application/xml; charset=utf-8]
+      Date: ['Mon, 14 Aug 2017 17:53:46 GMT']
+      ETag: [W/"b483c9c3cc3d7eb7a3f39663f4963a83"]
+      Server: [Server]
+      Set-Cookie: ['csid=BAhJIhg1MTctNjE4NDQzNy02NzgyMTM1BjoGRVQ%3D--0c59e6b7b23648ba77fe37b63049272e793a4cf3;
+          path=/; expires=Fri, 14 Aug 2037 17:53:46 -0000', locale=en; path=/, '_session_id2=0ea1db451cf95ea28f64594ee71705e0;
+          path=/; expires=Mon, 14 Aug 2017 23:53:46 -0000; HttpOnly']
+      Status: [200 OK]
+      Vary: ['Accept-Encoding,User-Agent']
+      X-Content-Type-Options: [nosniff, nosniff]
+      X-Frame-Options: [ALLOWALL]
+      X-Request-Id: [1XBFZ49A3JEVQQP84P1K]
+      X-Runtime: ['0.050280']
+      X-XSS-Protection: [1; mode=block]
+    status: {code: 200, message: OK}
+version: 1

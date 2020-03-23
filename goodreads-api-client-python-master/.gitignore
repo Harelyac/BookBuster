@@ -1,0 +1,16 @@
+.coverage
+.eggs/
+.envrc
+.python-version
+
+build/
+dist/
+docs/_build
+htmlcov/
+*.egg-info
+
+*.pyc
+*.swp
+__pycache__
+
+client_id.json

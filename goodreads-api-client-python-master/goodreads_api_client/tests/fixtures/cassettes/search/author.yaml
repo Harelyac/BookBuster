@@ -1,0 +1,38 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      User-Agent: [python-requests/2.18.3]
+    method: GET
+    uri: http://www.goodreads.com/api/author_url/Murakami?format=xml
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAAA2WRXUvDMBSGr9dfUXvhnY0yP4qmGcPhx3QocyIyRgntYQ1dkpqPVf+9SbaxoeQm
+        OTx5znsSPPjmq3gNSjMp8uQsPU1iEKWsmFjmyfvs7iRLBiTC91JWCmilp6BbKTSQKI7xFL4saOP3
+        7kStqUEYVlLjZMQoCxj9KQbSsQ38EHw0vx0NZ8P561X2KZ5G2WM5Gz+/jSeXL91Ht1gQjDy2kXMw
+        taz2d2jLCu+Wqlgx0QR6y/hk6CBaFPV6IZxUMavypN+/OE+IK/awoBz2zgeqbMPiiVW0oZwFZyAC
+        69uQ2pj2GqGu69Ll7knSUvIwp1RI17JDvkG6kRU72cAaXnComOW5y35MeXvjS1paVUJ+MApGoZMP
+        vbW6vVsRRv9/4Rd/jB48wAEAAA==
+    headers:
+      Cache-Control: ['max-age=0, private, must-revalidate']
+      Content-Encoding: [gzip]
+      Content-Type: [application/xml; charset=utf-8]
+      Date: ['Mon, 14 Aug 2017 17:54:01 GMT']
+      ETag: [W/"79f1bfb5e85da3354e8384dd66e04010"]
+      Server: [Server]
+      Set-Cookie: ['csid=BAhJIhg3NzgtMDAyMTM4Ny0wNzA5MzkyBjoGRVQ%3D--71cceda6e6bbc43c2d7efac9508e4761b014af51;
+          path=/; expires=Fri, 14 Aug 2037 17:54:00 -0000', locale=en; path=/, '_session_id2=e684bd9077b250e803c9f70d74e3dced;
+          path=/; expires=Mon, 14 Aug 2017 23:54:01 -0000; HttpOnly']
+      Status: [200 OK]
+      Vary: ['Accept-Encoding,User-Agent']
+      X-Content-Type-Options: [nosniff, nosniff]
+      X-Frame-Options: [ALLOWALL]
+      X-Request-Id: [0DCWNV23GE6VSCW84TR3]
+      X-Runtime: ['0.192797']
+      X-XSS-Protection: [1; mode=block]
+    status: {code: 200, message: OK}
+version: 1

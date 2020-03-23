@@ -1,0 +1,44 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      User-Agent: [python-requests/2.18.3]
+    method: GET
+    uri: http://www.goodreads.com/search/index?field=all&format=xml&page=1&q=Highprince+of+War
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAAA51U226cMBB9z1dQ+tJKZQ0EFqhYoqRRL2mrVslWURVFyAuzYAXsrW328vc1Npvs
+        pVGlPGGPz8wczlzSs3XbWEvggjA6sb2Ra1tAC1YSWk3sX9OPTmyfZSfpJ8ZKDrgU1yAWjArITiwr
+        vYY/HQjZn9UNd7IGKkmBpQqWSd5Big6MGqmwD7DJ0ld3Hy7Pp+d3P6P4N/16GX8pplffbq6+j3+s
+        blf391mKepgJ3oKsWfnkIwDzos4JLWGtoQOgp4V2eKUGqOkqsnwn7WdS1QtOaAEWm1u3mOs4BmSS
+        chBdI4UjJOYy81K0b9gHAS13If3VACSTuHEG1x6ybzAgwTpeQPaoc4oGi3nWrBxJWnAEFIyWInNH
+        bjjQ3X/Yo2U4aM1XjD9oHUhpyc0CJjahEirgduafxoHrR+MUEc06nTH2IPKCdVQeYtUP7LxqNFcV
+        p9Uz+DBQuu0CtIuEtcw5LAmsnvHzlVBHIO3LOKkIxU2+6GbN0G75RjXEAVWLkmZi931oo+cdW0Zl
+        /SLPEm/+54fVaOEKciNAFowi9VsHRq23GqO8l3UIeKGO9tA/x+XyIj90k3G0LVevJ5ENZEctbb2Z
+        1mDdSMbbRrW7tM7V1JAlvLNeh2+VwNrLNEw/qYybyz+b5DQOQ/cppcJQ3EJ2wTEtGbVu1EftEUZT
+        pO0mql4A27ApaXsxOt5ktZSL9wiJUcUdLARIMSpYi8wRUbaomWS60ZDneWsviJ1ZUbiBj5Mi8bCf
+        FF45jt04SWA+j1wXu6ejBa0UvccUhoBocdPkL0ocuusodHDizeZ+kPhRjGMP4xmeRb4H8yj2iwBH
+        gUl7mKYvKnqsqtqgyIzfoMp2Gyj7dkGp4/GW/QvcadkyoAUAAA==
+    headers:
+      Cache-Control: ['max-age=0, private, must-revalidate']
+      Content-Encoding: [gzip]
+      Content-Type: [application/xml; charset=utf-8]
+      Date: ['Mon, 14 Aug 2017 17:54:01 GMT']
+      ETag: [W/"f32553879488f4fd9487808b45caaff1"]
+      Server: [Server]
+      Set-Cookie: ['csid=BAhJIhgwNjAtNzA1NjMwOS02MzExNjUzBjoGRVQ%3D--0dd9f09d72c3b3675a27f616b487bde2e3633b91;
+          path=/; expires=Fri, 14 Aug 2037 17:54:01 -0000', locale=en; path=/, '_session_id2=4962ef7016c3af4f68c335e7479d568a;
+          path=/; expires=Mon, 14 Aug 2017 23:54:01 -0000; HttpOnly']
+      Status: [200 OK]
+      Vary: ['User-Agent,Accept-Encoding']
+      X-Content-Type-Options: [nosniff, nosniff]
+      X-Frame-Options: [ALLOWALL]
+      X-Request-Id: [073201ET03JQGGZW362F]
+      X-Runtime: ['0.100937']
+      X-XSS-Protection: [1; mode=block]
+    status: {code: 200, message: OK}
+version: 1

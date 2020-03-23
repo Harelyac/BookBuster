@@ -1,0 +1,14 @@
+- repo: local
+  hooks:
+  - id: python-lint
+    name: python-lint
+    entry: make
+    args: [lint-py]
+    language: system
+    files: \.(py)$
+  - id: rst-lint
+    name: rst-lint
+    entry: make
+    args: [lint-rst]
+    language: system
+    files: \.(rst)$

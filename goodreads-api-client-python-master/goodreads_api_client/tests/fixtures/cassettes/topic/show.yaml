@@ -1,0 +1,48 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      User-Agent: [python-requests/2.18.3]
+    method: GET
+    uri: http://www.goodreads.com/topic/show/693?format=xml
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAAA31VXW/bNhR9nn7FnR/WFEhESbESx2MUZG0dJG2wLckwDEVh0Na1zEYiVZKq63/f
+        S0l2bbfriyVdnnt4P4/51ZeqhM9orNTqchCH0QBQzXUuVXE5+OdpcjIaXGUBv9E6Nyhy+4C21spi
+        FgDwB/zUoHX+nb5E45aonJwLR2SZMw1ydmBskYR9xnXGf33/6vX10/X7v85H/6m3r0e386e7d493
+        92d/rv5dffiQceZhHXmFbqnzbz5O13I+tUvdAftjHxTbiYq3MIpf5tnZxSln9AzaQLWZNhbNlAxx
+        kkRp0oW6Y97HKVFhdq9NIRT8UYr5s6dQfYIbrxYU8LmuKiqEnc51o1wWc3ZgCbjCFZ3uwSLOfmDd
+        Yasp3FoUmKUE3TpvrQF30pWYPTw+wgQxD8OQs84U8KbOhcN8Klz2tGzgXqwhOYN4NI4uxsMhnETn
+        UQRJFFOsO9CAl8K6TaDeeWIk3DUKohEkp+N0zzk65+wQH3DbzD7i3E3dusbsxuim5mzPFvzCF7rM
+        0bQjJXPwyMuBVA4LNIOMOuO7RmdteR+boqCZowmz8Juo6t/hbz+D/psK2DWAbQiJu/BX/g81ZdtT
+        d3XaTnlbwBl1eVtBur6Op7Ki+k8bU2ZL5+oxY63BhoU5EdaisyH1hbVXWhbHo2SYpqPTYR2zOPxY
+        F5ztcQS8g2bBty6DdcI42kS/h3n7dNqJ0r+1WfSN79eCwj9NhsnFJhECzHS+s1u34IxEKqoGkdNj
+        ieAHZEH5eVu1BlEUBgvhtIGjG/9mZGNfHsOscSAdLIQsMR/zmQGWdb+3Lyqw2pj1MdwCzXiZqxcO
+        DPqbPiMJAVAOBVIW01kp1PMAlgYXl4O+ZqvVKiw2etIWbKkrZEel9FCDlKvS1MFSrwabOv/MhzY3
+        A6tkXWP+sovwXhS1REp0DJM2fp9rLYztsydTCEdvqtqtIdfzxq8rCAcUAkJ8TEmVTaUg7uk60nea
+        9A8WHiIVTKTBif5CWwZCramwuimWzl61utX2oBOug827bgpIUojjcZyOaYu2m3e2v3m9TnqN6oha
+        2dxRq25we9iOOm2WoDshH1uJstyZ3K3s/myE/b00wcM0iS/O0+GoTlgnk36M2xQPaTfKzjYhbzWK
+        FHErV+TYSzIZv/9T+QoE8Sz9jwYAAA==
+    headers:
+      Cache-Control: ['max-age=0, private, must-revalidate']
+      Content-Encoding: [gzip]
+      Content-Type: [application/xml; charset=utf-8]
+      Date: ['Mon, 14 Aug 2017 17:54:00 GMT']
+      ETag: [W/"4356d7d42accad679be52b50eee85f8c"]
+      Server: [Server]
+      Set-Cookie: ['csid=BAhJIhg2NzctOTc2NTE5OC0xNDQ0Mjg3BjoGRVQ%3D--662eb028291b6acbc47e7a6ec3fb2d2a57a5cd21;
+          path=/; expires=Fri, 14 Aug 2037 17:53:59 -0000', locale=en; path=/, '_session_id2=388003b1eb8946d1fdef76dd3d9a8a4e;
+          path=/; expires=Mon, 14 Aug 2017 23:54:00 -0000; HttpOnly']
+      Status: [200 OK]
+      Vary: ['User-Agent,Accept-Encoding']
+      X-Content-Type-Options: [nosniff, nosniff]
+      X-Frame-Options: [ALLOWALL]
+      X-Request-Id: [1PZY369YKX05YYSXGM6W]
+      X-Runtime: ['0.113087']
+      X-XSS-Protection: [1; mode=block]
+    status: {code: 200, message: OK}
+version: 1

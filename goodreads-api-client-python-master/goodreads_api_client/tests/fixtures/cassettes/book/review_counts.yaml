@@ -1,0 +1,36 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      User-Agent: [python-requests/2.18.3]
+    method: GET
+    uri: http://www.goodreads.com/book/review_counts.json?format=xml&isbns=0441172717
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAAA22O2wqDMBAF/2WfQ8nm0o35lSKibZAgJBBTLYj/3pRKoNLXGc5wNhhinGawtw38
+        A6yWJAUDPw8BLHClEEkQEnwZykIbMlU0RaQ++zDO3T0+QwZr9KeQ3OLdWiEqyQ2D7F65OylSxGCN
+        aepOIS20ENX9jgxHeeWH+1dFKVAx6BeX+tEd6XJeXcrnvd3fdwn0GfkAAAA=
+    headers:
+      Cache-Control: ['max-age=0, private, must-revalidate']
+      Content-Encoding: [gzip]
+      Content-Length: ['158']
+      Content-Type: [application/json; charset=utf-8]
+      Date: ['Mon, 14 Aug 2017 17:53:47 GMT']
+      ETag: [W/"ac5fd390823f5a668eb3e30b39a4929f-gzip"]
+      Server: [Server]
+      Set-Cookie: ['csid=BAhJIhgwNDktODIzODg2Ny0xNTkxMjE3BjoGRVQ%3D--5c2933e9fa3e15650b09b73c1189d3963809f986;
+          path=/; expires=Fri, 14 Aug 2037 17:53:46 -0000', locale=en; path=/, '_session_id2=d543628f769cf27f7920d41f400f39fc;
+          path=/; expires=Mon, 14 Aug 2017 23:53:46 -0000; HttpOnly']
+      Status: [200 OK]
+      Vary: ['Accept-Encoding,User-Agent']
+      X-Content-Type-Options: [nosniff, nosniff]
+      X-Frame-Options: [ALLOWALL]
+      X-Request-Id: [0Z66NHCQQV3PSCEC5C15]
+      X-Runtime: ['0.045971']
+      X-XSS-Protection: [1; mode=block]
+    status: {code: 200, message: OK}
+version: 1

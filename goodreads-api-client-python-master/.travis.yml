@@ -1,0 +1,15 @@
+language: python
+sudo: false
+python:
+  - "3.5"
+install: "make install"
+before_script:
+  - pip freeze
+jobs:
+  include:
+    - stage: coverage
+      script: make coverage
+      after_success: make coverage-report
+    - stage: lint
+      script: make lint
+

@@ -1,0 +1,42 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      User-Agent: [python-requests/2.18.3]
+    method: GET
+    uri: http://www.goodreads.com/topic/group_folder/85538?format=xml
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAAA3VUbU/bMBD+zq/I8nXq4kDThso1QiDQGGgTK5omhCIvOVqPJu7sCy//fmfHgdCK
+        Tzmfn7t77u5x+NFzvY4ewVilm3mcfmFxBE2pK9Us5/HN4myUx0dij59rXRmQlb0Gu9GNBbEXRfwa
+        /rVg0dl0ki2uoEFVSqRkAk0LPNlyeiRhH+BF8E+3J6fHi+PbH9P8d/PtNP9aLi4uf15cTb4//Xq6
+        uxM8cbAueQ240tVbDOqNKoul0e2muNfrCowPCDBHLhmw40Ogp64qkWfZQc4TspyjQ9AhY4fjQ568
+        nj0aobZFqdsGRUohg6O7bmQN4mQljSyRRskT73A3nqaNLEqDNF433Mp/UaNcOyv054GBWYQvG5jH
+        qkFYgonFhLE0e2OKCtcgzuSjNkQkeq3Lk+7G1S11XdMuAufthCn18B7hK6+lRWrSRxYSQ1QlEVDV
+        EIt9lqajlI3YeMEmszGbZdPPjM0Y48lWqE9XamrgGQvXjTh3m3JVB74hSFXbJMMe+oiwprZxMuxW
+        ETWKRuh0Fie+om3//IWyq/jhJVXajnMi1aZoLZjA4obMfjW71A6mWbafT3rtUOV7ZWh2fu1X6oF0
+        P3AQs364HhCm1WuE7lxhH7zDzL+fQM232Gk9iGaX2TtNE/xjZSZ9JpJNpz2XvrMtvfjwAHoUOXb/
+        Af8BvBnXMj4EAAA=
+    headers:
+      Cache-Control: ['max-age=0, private, must-revalidate']
+      Content-Encoding: [gzip]
+      Content-Type: [application/xml; charset=utf-8]
+      Date: ['Mon, 14 Aug 2017 17:53:59 GMT']
+      ETag: [W/"9467bc9260544b32b41a4f1da8dc0a5b"]
+      Server: [Server]
+      Set-Cookie: ['csid=BAhJIhgwMjUtMTQzODI4MS02NTkzMDcxBjoGRVQ%3D--bd4751fd546767488e1190c66dcaa9fda01c02b7;
+          path=/; expires=Fri, 14 Aug 2037 17:53:59 -0000', locale=en; path=/, '_session_id2=fee207eb60bbf3fa4392d615c3db0c7f;
+          path=/; expires=Mon, 14 Aug 2017 23:53:59 -0000; HttpOnly']
+      Status: [200 OK]
+      Vary: ['Accept-Encoding,User-Agent']
+      X-Content-Type-Options: [nosniff, nosniff]
+      X-Frame-Options: [ALLOWALL]
+      X-Request-Id: [1BCSFD6S95X9KG6C7AZ4]
+      X-Runtime: ['0.092732']
+      X-XSS-Protection: [1; mode=block]
+    status: {code: 200, message: OK}
+version: 1
