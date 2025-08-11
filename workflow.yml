@@ -10,9 +10,9 @@ on: push
 # 2. Change these variables for your configuration:
 env:
   AZURE_WEBAPP_NAME: AppWithContainer   # set this to your application's name
-  CONTAINER_REGISTRY: ${{ secrets.REGISTRY_URL }}  # set secret with Container Registry URL, example : xyz.azurecr.io 
-# AZURE_RESOURCE_GROUP: ActionsDemo   # set this to your Azure Resource group's name - Needed only if you are provisioning the app in the workflow
-# AZURE_APP_PLAN: ActionPlan  # set this to your App service plan's name - Needed only if you are provisioning the app in the workflow
+  CONTAINER_REGISTRY: acrcandidates.azurecr.io  # set secret with Container Registry URL, example : xyz.azurecr.io 
+  AZURE_RESOURCE_GROUP: platform_candidate_1   # set this to your Azure Resource group's name - Needed only if you are provisioning the app in the workflow
+  AZURE_APP_PLAN: ASP-scilentmuseum-9e05  # set this to your App service plan's name - Needed only if you are provisioning the app in the workflow
   
 jobs:
   build-and-deploy-to-dev:
@@ -34,8 +34,8 @@ jobs:
       uses: azure/docker-login@v1
       with:
         login-server: ${{ env.CONTAINER_REGISTRY }}
-        username: ${{ secrets.REGISTRY_USERNAME }}
-        password: ${{ secrets.REGISTRY_PASSWORD }}    
+        username: acrcandidates
+        password: jYaQpnsrs4Xu35dBck91Ksm83jh23i+kH0toA0lQcF+ACRAqnRn+}    
     - name: Docker Build & Push to ACR
       run: |
         docker build . -t ${{ env.CONTAINER_REGISTRY }}/nodejsapp:${{ github.sha }}
