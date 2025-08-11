@@ -1,15 +1,15 @@
-# Use existing Resource Group
+# Existing Resource Group
 data "azurerm_resource_group" "rg" {
   name = var.resource_group_name
 }
 
-# If your App Service Plan already exists, reference it too:
+# Existing App Service Plan
 data "azurerm_service_plan" "plan" {
   name                = var.app_service_plan_name
   resource_group_name = data.azurerm_resource_group.rg.name
 }
 
-# Create/ensure the Linux Web App only (uses existing RG & Plan)
+# Create the Linux Web App, using existing RG & Plan
 resource "azurerm_linux_web_app" "app" {
   name                = var.webapp_name
   resource_group_name = data.azurerm_resource_group.rg.name
