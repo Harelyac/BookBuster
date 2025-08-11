@@ -10,7 +10,7 @@ env:
   AZURE_WEBAPP_NAME: AppWithContainer1231231245435
   CONTAINER_REGISTRY: acrcandidates.azurecr.io
   AZURE_RESOURCE_GROUP: platform_candidate_1
-  AZURE_APP_PLAN: ASP-scilentmuseum-9e05
+  AZURE_APP_PLAN: ASP-platform_candidate_1
   IMAGE_NAME: nodejsapp
   TF_WORKING_DIR: infra
 
