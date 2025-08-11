@@ -11,7 +11,7 @@ env:
   AZURE_RESOURCE_GROUP: platform_candidate_1
   AZURE_APP_PLAN: ASP-scilentmuseum-9e05
   IMAGE_NAME: nodejsapp
-  TF_WORKING_DIR: infra         # <— path to your Terraform code
+  TF_WORKING_DIR: infra
 
 permissions:
   contents: read
@@ -58,26 +58,17 @@ jobs:
 
       - name: Terraform plan
         working-directory: ${{ env.TF_WORKING_DIR }}
-        run: terraform plan -out=tfplan -input=false \
-          -var "resource_group_name=${{ env.AZURE_RESOURCE_GROUP }}" \
-          -var "app_service_plan_name=${{ env.AZURE_APP_PLAN }}" \
-          -var "webapp_name=${{ env.AZURE_WEBAPP_NAME }}"
+        run: |
+          terraform plan -out=tfplan -input=false \
+            -var="resource_group_name=${{ env.AZURE_RESOURCE_GROUP }}" \
+            -var="app_service_plan_name=${{ env.AZURE_APP_PLAN }}" \
+            -var="webapp_name=${{ env.AZURE_WEBAPP_NAME }}"
 
       - name: Terraform apply
         if: github.ref == 'refs/heads/master'
         working-directory: ${{ env.TF_WORKING_DIR }}
-        run: terraform apply -input=false -auto-approve tfplan
-
-      # --- (Optional) if you still want az CLI provisioning, remove it once TF manages infra
-      # - name: Provision Web App (optional)
-      #   uses: azure/CLI@v1
-      #   with:
-      #     inlineScript: |
-      #       az webapp create \
-      #         --resource-group ${{ env.AZURE_RESOURCE_GROUP }} \
-      #         --plan ${{ env.AZURE_APP_PLAN }} \
-      #         --name ${{ env.AZURE_WEBAPP_NAME }} \
-      #         -i nginx
+        run: |
+          terraform apply -input=false -auto-approve tfplan
 
       # --- Build & deploy container ---------------------------------------------------
 
