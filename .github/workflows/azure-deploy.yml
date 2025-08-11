@@ -1,21 +1,21 @@
 name: Build and deploy Docker app to Azure
 
-
 on:
   push:
-    branches: [ master ]   # run on pushes to main
-  workflow_dispatch:      # allow manual runs
+    branches: [ master ]
+  workflow_dispatch:
 
 env:
-  AZURE_WEBAPP_NAME: AppWithContainer1231231245435                 # your App Service name
-  CONTAINER_REGISTRY: acrcandidates.azurecr.io        # e.g. xyz.azurecr.io
-  AZURE_RESOURCE_GROUP: platform_candidate_1          # only needed if you provision in the workflow
-  AZURE_APP_PLAN: ASP-scilentmuseum-9e05              # only needed if you provision in the workflow
+  AZURE_WEBAPP_NAME: AppWithContainer1231231245435
+  CONTAINER_REGISTRY: acrcandidates.azurecr.io
+  AZURE_RESOURCE_GROUP: platform_candidate_1
+  AZURE_APP_PLAN: ASP-scilentmuseum-9e05
   IMAGE_NAME: nodejsapp
+  TF_WORKING_DIR: infra         # <— path to your Terraform code
 
 permissions:
   contents: read
-  id-token: write   # for azure/login OIDC if you switch later
+  id-token: write
 
 jobs:
   build-and-deploy-to-dev:
@@ -31,16 +31,55 @@ jobs:
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-      # OPTIONAL: Provision Web App for Containers if it doesn't exist
-      - name: Provision Web App (optional)
-        uses: azure/CLI@v1
+      # --- Terraform -----------------------------------------------------------------
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
         with:
-          inlineScript: |
-            az webapp create \
-              --resource-group ${{ env.AZURE_RESOURCE_GROUP }} \
-              --plan ${{ env.AZURE_APP_PLAN }} \
-              --name ${{ env.AZURE_WEBAPP_NAME }} \
-              -i nginx
+          terraform_version: 1.9.5
+
+      # Export ARM_* from AZURE_CREDENTIALS so the azurerm provider can auth explicitly
+      - name: Export ARM_* env vars
+        run: |
+          echo '${{ secrets.AZURE_CREDENTIALS }}' > cred.json
+          echo "ARM_CLIENT_ID=$(jq -r .clientId cred.json)" >> $GITHUB_ENV
+          echo "ARM_CLIENT_SECRET=$(jq -r .clientSecret cred.json)" >> $GITHUB_ENV
+          echo "ARM_TENANT_ID=$(jq -r .tenantId cred.json)" >> $GITHUB_ENV
+          echo "ARM_SUBSCRIPTION_ID=$(jq -r .subscriptionId cred.json)" >> $GITHUB_ENV
+          rm cred.json
+
+      - name: Terraform init
+        working-directory: ${{ env.TF_WORKING_DIR }}
+        run: terraform init -input=false
+
+      - name: Terraform validate
+        working-directory: ${{ env.TF_WORKING_DIR }}
+        run: terraform validate
+
+      - name: Terraform plan
+        working-directory: ${{ env.TF_WORKING_DIR }}
+        run: terraform plan -out=tfplan -input=false \
+          -var "resource_group_name=${{ env.AZURE_RESOURCE_GROUP }}" \
+          -var "app_service_plan_name=${{ env.AZURE_APP_PLAN }}" \
+          -var "webapp_name=${{ env.AZURE_WEBAPP_NAME }}"
+
+      - name: Terraform apply
+        if: github.ref == 'refs/heads/master'
+        working-directory: ${{ env.TF_WORKING_DIR }}
+        run: terraform apply -input=false -auto-approve tfplan
+
+      # --- (Optional) if you still want az CLI provisioning, remove it once TF manages infra
+      # - name: Provision Web App (optional)
+      #   uses: azure/CLI@v1
+      #   with:
+      #     inlineScript: |
+      #       az webapp create \
+      #         --resource-group ${{ env.AZURE_RESOURCE_GROUP }} \
+      #         --plan ${{ env.AZURE_APP_PLAN }} \
+      #         --name ${{ env.AZURE_WEBAPP_NAME }} \
+      #         -i nginx
+
+      # --- Build & deploy container ---------------------------------------------------
 
       - name: ACR login
         uses: azure/docker-login@v1
@@ -55,21 +94,9 @@ jobs:
           docker build -t "$IMAGE" .
           docker push "$IMAGE"
 
-      # If your Web App does NOT already have ACR credentials configured, set them once:
-      # - name: Configure Web App ACR credentials (if needed)
-      #   uses: Azure/appservice-settings@v1
-      #   with:
-      #     app-name: ${{ env.AZURE_WEBAPP_NAME }}
-      #     app-settings-json: |
-      #       [
-      #         { "name": "DOCKER_REGISTRY_SERVER_URL", "value": "https://${{ env.CONTAINER_REGISTRY }}", "slotSetting": false },
-      #         { "name": "DOCKER_REGISTRY_SERVER_USERNAME", "value": "${{ secrets.REGISTRY_USERNAME }}", "slotSetting": false },
-      #         { "name": "DOCKER_REGISTRY_SERVER_PASSWORD", "value": "${{ secrets.REGISTRY_PASSWORD }}", "slotSetting": false }
-      #       ]
-
       - name: Deploy to Azure Web App (Containers)
         uses: azure/webapps-deploy@v2
         with:
           app-name: ${{ env.AZURE_WEBAPP_NAME }}
           images: ${{ env.CONTAINER_REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.sha }}
-          # startup-command: 'npm start' # uncomment if your container needs a custom CMD
+          # startup-command: 'python -m gunicorn app:app --bind 0.0.0.0:8000'
