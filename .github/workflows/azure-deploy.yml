@@ -1,0 +1,74 @@
+name: Build and deploy Docker app to Azure
+
+on:
+  push:
+    branches: [ main ]   # run on pushes to main
+  workflow_dispatch:      # allow manual runs
+
+env:
+  AZURE_WEBAPP_NAME: AppWithContainer                 # your App Service name
+  CONTAINER_REGISTRY: acrcandidates.azurecr.io        # e.g. xyz.azurecr.io
+  AZURE_RESOURCE_GROUP: platform_candidate_1          # only needed if you provision in the workflow
+  AZURE_APP_PLAN: ASP-scilentmuseum-9e05              # only needed if you provision in the workflow
+  IMAGE_NAME: nodejsapp
+
+permissions:
+  contents: read
+  id-token: write   # for azure/login OIDC if you switch later
+
+jobs:
+  build-and-deploy-to-dev:
+    runs-on: ubuntu-latest
+    environment: dev
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Azure login
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      # OPTIONAL: Provision Web App for Containers if it doesn't exist
+      # - name: Provision Web App (optional)
+      #   uses: azure/CLI@v1
+      #   with:
+      #     inlineScript: |
+      #       az webapp create \
+      #         --resource-group ${{ env.AZURE_RESOURCE_GROUP }} \
+      #         --plan ${{ env.AZURE_APP_PLAN }} \
+      #         --name ${{ env.AZURE_WEBAPP_NAME }} \
+      #         -i nginx
+
+      - name: ACR login
+        uses: azure/docker-login@v1
+        with:
+          login-server: ${{ env.CONTAINER_REGISTRY }}
+          username: ${{ secrets.REGISTRY_USERNAME }}
+          password: ${{ secrets.REGISTRY_PASSWORD }}
+
+      - name: Build & push image
+        run: |
+          IMAGE=${{ env.CONTAINER_REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.sha }}
+          docker build -t "$IMAGE" .
+          docker push "$IMAGE"
+
+      # If your Web App does NOT already have ACR credentials configured, set them once:
+      # - name: Configure Web App ACR credentials (if needed)
+      #   uses: Azure/appservice-settings@v1
+      #   with:
+      #     app-name: ${{ env.AZURE_WEBAPP_NAME }}
+      #     app-settings-json: |
+      #       [
+      #         { "name": "DOCKER_REGISTRY_SERVER_URL", "value": "https://${{ env.CONTAINER_REGISTRY }}", "slotSetting": false },
+      #         { "name": "DOCKER_REGISTRY_SERVER_USERNAME", "value": "${{ secrets.REGISTRY_USERNAME }}", "slotSetting": false },
+      #         { "name": "DOCKER_REGISTRY_SERVER_PASSWORD", "value": "${{ secrets.REGISTRY_PASSWORD }}", "slotSetting": false }
+      #       ]
+
+      - name: Deploy to Azure Web App (Containers)
+        uses: azure/webapps-deploy@v2
+        with:
+          app-name: ${{ env.AZURE_WEBAPP_NAME }}
+          images: ${{ env.CONTAINER_REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.sha }}
+          # startup-command: 'npm start' # uncomment if your container needs a custom CMD
