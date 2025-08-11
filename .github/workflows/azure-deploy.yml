@@ -7,7 +7,7 @@ on:
   workflow_dispatch:      # allow manual runs
 
 env:
-  AZURE_WEBAPP_NAME: AppWithContainer                 # your App Service name
+  AZURE_WEBAPP_NAME: AppWithContainer1231231245435                 # your App Service name
   CONTAINER_REGISTRY: acrcandidates.azurecr.io        # e.g. xyz.azurecr.io
   AZURE_RESOURCE_GROUP: platform_candidate_1          # only needed if you provision in the workflow
   AZURE_APP_PLAN: ASP-scilentmuseum-9e05              # only needed if you provision in the workflow
